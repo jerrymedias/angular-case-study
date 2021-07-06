@@ -1,0 +1,25 @@
+.border{
+    padding: 5px;
+
+    .dflexjustify{
+        display: flex;
+        justify-content: space-evenly;
+        padding: 15px;
+
+        .direction{
+            display: flex;
+            flex-direction: column;
+
+            .counter{
+                text-align: center;
+                font-weight: 600;
+                font-size: 35px;
+            }
+
+            .counter-name {
+                font-size: 15px;
+                font-weight: 600;
+            }
+        }
+    }
+}

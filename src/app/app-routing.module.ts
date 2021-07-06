@@ -9,27 +9,27 @@ const routes: Routes = [
   },
   {
     path: 'route-1',
-    loadChildren: ''
+    loadChildren: () => import('./modules/route1/route1.module').then(m => m.Route1Module)
   },
   {
     path: 'route-2',
-    loadChildren: ''
+    loadChildren: () => import('./modules/route2/route2.module').then(m => m.Route2Module)
   },
   {
     path: 'route-3',
-    loadChildren: ''
+    loadChildren: () => import('./modules/route3/route3.module').then(m => m.Route3Module)
   },
   {
     path: 'route-4',
-    loadChildren: ''
+    loadChildren: () => import('./modules/route4/route4.module').then(m => m.Route4Module)
   },
   {
     path: 'route-5',
-    loadChildren: ''
+    loadChildren: () => import('./modules/route5/route5.module').then(m => m.Route5Module)
   },
   {
     path: 'route-6',
-    loadChildren: ''
+    loadChildren: () => import('./modules/route6/route6.module').then(m => m.Route6Module)
   }
 ];
 

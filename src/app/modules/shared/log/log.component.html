@@ -1,0 +1,5 @@
+<div class="border">
+    <div *ngFor="let log of startPausedLogs">{{log.startedOrPaused}} at 
+        {{log.time | date:'dd-MM-yyyy'}} {{log.time | date:'mediumTime'}}</div>
+    <!-- <div *ngIf="!startPausedLogs.length">NO LOGS FOUND</div> -->
+</div>

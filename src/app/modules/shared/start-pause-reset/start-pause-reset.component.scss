@@ -1,0 +1,12 @@
+.border{
+    border: 3px solid black;
+    padding: 5px;
+    margin-bottom: 5px;
+    height: 165px;
+
+    .dflexjustify{
+        display: flex;
+        justify-content: space-evenly;
+        padding: 15px;
+    }
+}

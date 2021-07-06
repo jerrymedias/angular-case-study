@@ -1,1 +1,22 @@
-<p>route3 works!</p>
+<div class="route-3-container">
+    <div class="border">
+        <div class="row">
+            <div class="col-sm-6">
+                <app-count-down-timer [timer]="countDownTimer" [startOrPause]="startedOrPaused"></app-count-down-timer>
+            </div>
+            <div class="col-sm-6">
+                <app-start-pause-reset (timerCountChange)="timerCountChange($event)"
+                (startOrPause)="startOrPause($event)" (reset)="resetClicked()"></app-start-pause-reset>
+            </div>
+        </div>
+    
+        <div class="row">
+            <div class="col-sm-6">
+                <app-log [startedOrPaused]="startedOrPaused"></app-log>
+            </div>
+            <div class="col-sm-6">
+                <app-start-pause-counter [started]="started" [paused]="paused"></app-start-pause-counter>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+.btn-container {
+    width: 200px;
+    height: 200px;
+    border: 1px solid black;
+    display: inline-block;
+    margin: 10px;
+    position: relative;
+
+    .vertical-center {
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 33%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+    }
+}

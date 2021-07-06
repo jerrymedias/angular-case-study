@@ -1,0 +1,10 @@
+<div class="border">
+    <div class="dflexjustify">
+        <label for="timer">Enter Timer Limit</label>
+        <input type="number" name="timer" [disabled]="disableInput" [(ngModel)]="timerCount" (ngModelChange)="emitTimerValueOnChange()">
+    </div>
+    <div class="dflexjustify">
+        <button class="btn btn-primary" (click)="emitStartPauseToParent()">{{startPauseButtonText}}</button>
+        <button class="btn btn-danger" (click)="emitResetToParent()">Reset</button>
+    </div>
+</div>

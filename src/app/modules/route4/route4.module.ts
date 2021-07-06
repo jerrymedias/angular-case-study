@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Route4Component } from './route4.component';
+import { RouterModule } from '@angular/router';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -9,7 +11,15 @@ import { Route4Component } from './route4.component';
     Route4Component
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    SharedModule,
+    RouterModule.forChild([{
+      path: '',
+      component: Route4Component,
+      data: {
+        via: 'Route4'
+      }
+    }])
   ]
 })
 export class Route4Module { }
