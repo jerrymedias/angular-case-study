@@ -20,8 +20,10 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.onPageReloadQuerySubscription = this.activatedRoute.queryParams.subscribe((queryParams: any) => {
-      this.selectedTabIndex = queryParams.tab;
-   });
+      if (queryParams.tab) {
+        this.selectedTabIndex = queryParams.tab;
+      }
+    });
   }
 
   navigateTo(routeNumber: number): void {
