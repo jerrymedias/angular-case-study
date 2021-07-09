@@ -1,1 +1,24 @@
-<p>route5 works!</p>
+<ng-container *ngIf="studentData">
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th class="col" (click)="increaseCounterAndSortData('name')">Name</th>
+                <th class="col" (click)="increaseCounterAndSortData('class')">Class</th>
+                <th class="col" (click)="increaseCounterAndSortData('section')">Section</th>
+                <th class="col" (click)="increaseCounterAndSortData('math')">Maths</th>
+                <th class="col" (click)="increaseCounterAndSortData('physics')">Physics</th>
+                <th class="col" (click)="increaseCounterAndSortData('computer')">Computer</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of studentData">
+                <th>{{data.name}}</th>
+                <th>{{data.class}}</th>
+                <th>{{data.section}}</th>
+                <th>{{data.math}}</th>
+                <th>{{data.physics}}</th>
+                <th>{{data.computer}}</th>
+            </tr>
+        </tbody>
+    </table>
+</ng-container>

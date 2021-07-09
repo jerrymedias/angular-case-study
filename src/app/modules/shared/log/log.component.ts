@@ -1,4 +1,5 @@
 import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { SharedService } from '../shared.service';
 
@@ -12,20 +13,27 @@ export class LogComponent implements OnInit, OnChanges, OnDestroy {
   startPausedLogs: Array<{startedOrPaused: string, time: Date}> = [];
   startOrPauseSubscription: Subscription | undefined;
   resetSubscription: Subscription | undefined;
+  activatedRouteSubscription: Subscription | undefined;
+  viaRoute: string = '';
   
   @Input('startedOrPaused') startedOrPaused: string = '';
 
-  constructor(public sharedService: SharedService) { }
+  constructor(public sharedService: SharedService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.startOrPauseSubscription = this.sharedService.startOrPauseChangeSource.subscribe((data: any) => {
-      this.startedOrPaused = data;
-      this.pushIntoLogs();
-    });
+    this.activatedRouteSubscription = this.activatedRoute.data
+      .subscribe(value => this.viaRoute = value.via);
 
-    this.resetSubscription = this.sharedService.resetChangeSource.subscribe((data: any) => {
-      this.emptyLogs();
-    });
+    if (this.viaRoute === 'Route4') { 
+      this.startOrPauseSubscription = this.sharedService.startOrPauseChangeSource.subscribe((data: any) => {
+        this.startedOrPaused = data;
+        this.pushIntoLogs();
+      });
+  
+      this.resetSubscription = this.sharedService.resetChangeSource.subscribe((data: any) => {
+        this.emptyLogs();
+      });
+    }
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -37,8 +45,11 @@ export class LogComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.startOrPauseSubscription && this.startOrPauseSubscription.unsubscribe();
-    this.resetSubscription && this.resetSubscription.unsubscribe();
+    this.activatedRouteSubscription && this.activatedRouteSubscription.unsubscribe();
+    if(this.viaRoute === 'Route4') {
+      this.startOrPauseSubscription && this.startOrPauseSubscription.unsubscribe();
+      this.resetSubscription && this.resetSubscription.unsubscribe();
+    }
   }
 
   pushIntoLogs(): void {

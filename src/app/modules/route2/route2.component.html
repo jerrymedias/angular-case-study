@@ -1,1 +1,17 @@
-<p>route2 works!</p>
+<div>
+    <div>
+        <div class="list-view-button"><i class="fa fa-bars" aria-hidden="true"></i> List view</div>
+        <div class="grid-view-button"><i class="fa fa-th-large" aria-hidden="true"></i> Grid view</div>
+    </div>
+    <div class="grid-container-4">
+        <div class="item" *ngFor="let data of storeData">
+            <div class="product-name">
+                {{data.title}}
+            </div>
+            <div class="image-wrapper">
+                <img src="{{data.image}}" alt="product">
+            </div>
+            <div class="price">$ {{data.price}}</div>
+        </div>
+    </div>
+</div>

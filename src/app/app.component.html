@@ -4,7 +4,7 @@
       <a class="navbar-brand">Sapient Assingment</a>
     </div>
     <ul class="nav navbar-nav">
-      <li *ngFor="let tab of tabsList; let i = index" routerLink="/route-{{tab}}"
+      <li *ngFor="let tab of tabsList; let i = index"
         [ngClass]="{'active': tab == selectedTabIndex}" (click)="navigateTo(tab)"><a>Route {{tab}}</a></li>
     </ul>
   </div>

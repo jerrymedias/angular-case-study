@@ -1,4 +1,5 @@
 import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { SharedService } from '../shared.service';
 
@@ -16,24 +17,30 @@ export class CountDownTimerComponent implements OnInit, OnChanges, OnDestroy {
   startOrPauseSubscription: Subscription | undefined;
   resetSubscription: Subscription | undefined;
   timerCountSubcription: Subscription | undefined;
+  activatedRouteSubscription: Subscription | undefined;
+  viaRoute: string = '';
 
-  constructor(private sharedService: SharedService) { }
+  constructor(private sharedService: SharedService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.startOrPauseSubscription = this.sharedService.startOrPauseChangeSource.subscribe((data: any) => {
-      this.startOrPause = data;
-      this.startOrPauseTimer();
-    });
+    this.activatedRouteSubscription = this.activatedRoute.data.subscribe(value => this.viaRoute = value.via);
 
-    this.resetSubscription = this.sharedService.resetChangeSource.subscribe((data: any) => {
-      this.timer = data;
-      this.timerInterval && clearInterval(this.timerInterval);
-    });
-
-    this.timerCountSubcription = this.sharedService.countDownTimerDataChangeSource.subscribe((data: any) => {
-      this.timer = data;
-      !this.timer && this.timerInterval && clearInterval(this.timerInterval);
-    });
+    if (this.viaRoute === 'Route4') {
+      this.startOrPauseSubscription = this.sharedService.startOrPauseChangeSource.subscribe((data: any) => {
+        this.startOrPause = data;
+        this.startOrPauseTimer();
+      });
+  
+      this.resetSubscription = this.sharedService.resetChangeSource.subscribe((data: any) => {
+        this.timer = data;
+        this.timerInterval && clearInterval(this.timerInterval);
+      });
+  
+      this.timerCountSubcription = this.sharedService.countDownTimerDataChangeSource.subscribe((data: any) => {
+        this.timer = data;
+        !this.timer && this.timerInterval && clearInterval(this.timerInterval);
+      });
+    }
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -45,9 +52,12 @@ export class CountDownTimerComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.startOrPauseSubscription && this.startOrPauseSubscription.unsubscribe();
-    this.resetSubscription && this.resetSubscription.unsubscribe();
-    this.timerCountSubcription && this.timerCountSubcription.unsubscribe();
+    this.activatedRouteSubscription && this.activatedRouteSubscription.unsubscribe();
+    if (this.viaRoute === 'Route4') {
+      this.startOrPauseSubscription && this.startOrPauseSubscription.unsubscribe();
+      this.resetSubscription && this.resetSubscription.unsubscribe();
+      this.timerCountSubcription && this.timerCountSubcription.unsubscribe();
+    }
   }
 
   startOrPauseTimer(): void {
