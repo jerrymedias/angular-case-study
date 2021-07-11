@@ -1,9 +1,22 @@
-<div>
-    <div>
-        <div class="list-view-button"><i class="fa fa-bars" aria-hidden="true"></i> List view</div>
-        <div class="grid-view-button"><i class="fa fa-th-large" aria-hidden="true"></i> Grid view</div>
+<div class="conatiner" *ngIf="!loading">
+    <div class="btn-group">
+        <button (click)="changeView('ListView')" class="btn btn-info">
+            List View
+        </button>
+        <button (click)="changeView('GridView')" class="btn btn-danger">
+            Grid View
+        </button>
+        <div class="dropdown">
+            <button class="dropbtn">Sort By Price</button>
+            <div class="dropdown-content">
+                <a (click)="sortByPrice('ascending')">Price-Low To High</a>
+                <a (click)="sortByPrice('descending')">Price-High To Low</a>
+            </div>
+        </div>
     </div>
-    <div class="grid-container-4">
+
+    <div
+        [ngClass]="{'grid-container-4': selectedViewType === 'GridView', 'grid-container-2': selectedViewType === 'ListView'}">
         <div class="item" *ngFor="let data of storeData">
             <div class="product-name">
                 {{data.title}}
@@ -15,3 +28,5 @@
         </div>
     </div>
 </div>
+
+<div class="loading" *ngIf="loading">Loading...</div>

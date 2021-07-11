@@ -9,11 +9,24 @@ import { Route2Service } from './route2.service';
 export class Route2Component implements OnInit {
 
   storeData: Array<any> = [];
+  selectedViewType: string = 'GridView';
+  loading: boolean = true;
 
   constructor(private route2Service: Route2Service) { }
 
   ngOnInit(): void {
-    this.route2Service.getStoreData().subscribe(res => this.storeData = res);
+    this.route2Service.getStoreData().subscribe(res => {
+      this.loading = false;
+      this.storeData = res;
+    });
+  }
+
+  changeView(view: string): void {
+    this.selectedViewType = view;
+  }
+
+  sortByPrice(sortType: string): void {
+    this.storeData.sort((a, b) => (sortType === 'ascending' ? a.price < b.price : a.price > b.price) ? -1 : 1);
   }
 
 }

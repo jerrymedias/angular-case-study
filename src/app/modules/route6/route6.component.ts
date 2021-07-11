@@ -1,4 +1,3 @@
-import { asLiteral } from '@angular/compiler/src/render3/view/util';
 import { Component, HostListener, OnInit } from '@angular/core';
 
 @Component({
@@ -6,6 +5,7 @@ import { Component, HostListener, OnInit } from '@angular/core';
   templateUrl: './route6.component.html',
   styleUrls: ['./route6.component.scss']
 })
+
 export class Route6Component implements OnInit {
 
   divContainerWithBtnlist: Array<string> = [];
