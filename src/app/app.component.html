@@ -4,8 +4,8 @@
       <a class="navbar-brand">Sapient Case Study</a>
     </div>
     <ul class="nav navbar-nav">
-      <li *ngFor="let tab of tabsList; let i = index"
-      routerLink="/route-{{i+1}}" routerLinkActive="active"><a>Route {{tab}}</a></li>
+      <li *ngFor="let tab of tabsList"
+      routerLink="/route-{{tab}}" routerLinkActive="active"><a>Route {{tab}}</a></li>
     </ul>
   </div>
 </nav>
