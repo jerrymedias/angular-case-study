@@ -4,10 +4,15 @@
     .banner {
         border: 3px solid black;
         padding: 25px;
-    
-        .rotating {
-            font-size: 80px;
-            color: blue;
+
+        .rotating-text-conatiner {
+            border: 3px solid black;
+
+            .rotating {
+                font-size: 80px;
+                color: #15d1ef;
+            }
         }
+    
     }
 }
