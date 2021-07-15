@@ -4,6 +4,7 @@ import { Route2Component } from './route2.component';
 import { RouterModule } from '@angular/router';
 import { Route2Service } from './route2.service';
 import { HttpClientModule } from '@angular/common/http';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -14,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     CommonModule,
     HttpClientModule,
+    SharedModule,
     RouterModule.forChild([{
       path: '',
       component: Route2Component

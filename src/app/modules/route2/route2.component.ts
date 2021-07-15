@@ -4,7 +4,7 @@ import { tap } from 'rxjs/operators';
 import { StudentData } from '../route5/route5.service';
 import { Route2Service } from './route2.service';
 
-enum SortOrder {
+export enum SortOrder {
   Ascending = "ascending",
   Descending = "descending",
   Recommended = "recommended"
@@ -32,6 +32,7 @@ export class Route2Component implements OnInit {
   copyOfStoreData: Array<product> = [];
   selectedViewType: ViewTypes = 'GridView';
   loading: boolean = true;
+  selectedPriceSort: string = 'recommended';
 
   constructor(
     private route2Service: Route2Service,
@@ -54,6 +55,7 @@ export class Route2Component implements OnInit {
   }
 
   sortByPrice(event: any): void {
+    this.selectedPriceSort = event.target.id;
     if (event.target.id === SortOrder.Recommended) {
       this.storeData$ = of(this.copyOfStoreData);
     } else {

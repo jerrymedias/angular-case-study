@@ -6,6 +6,7 @@ import { StartPauseCounterComponent } from './start-pause-counter/start-pause-co
 import { StartPauseResetComponent } from './start-pause-reset/start-pause-reset.component';
 import { FormsModule } from '@angular/forms';
 import { SharedService } from './shared.service';
+import { SortingArrowImageDirective } from './Directives/sorting-arrow-image.directive';
 
 
 
@@ -14,7 +15,8 @@ import { SharedService } from './shared.service';
     CountDownTimerComponent,
     LogComponent,
     StartPauseCounterComponent,
-    StartPauseResetComponent
+    StartPauseResetComponent,
+    SortingArrowImageDirective
   ],
   imports: [
     CommonModule,
@@ -25,6 +27,7 @@ import { SharedService } from './shared.service';
     LogComponent,
     StartPauseCounterComponent,
     StartPauseResetComponent,
+    SortingArrowImageDirective
   ],
   providers: [
     SharedService

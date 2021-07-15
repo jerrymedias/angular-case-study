@@ -1,5 +1,4 @@
 <ng-container *ngIf="(storeData$ | async) as products;else Loading">
-
     <div class="conatiner">
         <div class="btn-group">
             <div (click)="changeView($event)">
@@ -11,7 +10,9 @@
                 </button>
             </div>
             <div class="dropdown">
-                <button class="dropbtn">Sort By Price</button>
+                <button class="dropbtn">Sort By Price
+                    <span sortingArrowImage [selectedPriceSort]="selectedPriceSort"></span>
+                </button>
                 <div class="dropdown-content" (click)="sortByPrice($event)">
                     <a id="ascending">Price - Low To High</a>
                     <a id="descending">Price - High To Low</a>

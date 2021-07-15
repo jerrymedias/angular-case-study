@@ -3,17 +3,17 @@ import { CommonModule } from '@angular/common';
 import { Route5Component } from './route5.component';
 import { RouterModule } from '@angular/router';
 import { Route5Service } from './route5.service';
-import { SortingArrowImageDirective } from './sorting-arrow-image.directive';
+import { SharedModule } from '../shared/shared.module';
 
 
 
 @NgModule({
   declarations: [
-    Route5Component,
-    SortingArrowImageDirective
+    Route5Component
   ],
   imports: [
     CommonModule,
+    SharedModule,
     RouterModule.forChild([{
       path: '',
       component: Route5Component
