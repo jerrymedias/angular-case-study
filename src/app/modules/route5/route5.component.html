@@ -1,17 +1,35 @@
-<ng-container *ngIf="studentData">
+<ng-container *ngIf="(studentData$ | async) as studentData; else Loading">
     <table class="table table-striped">
         <thead class="thead-dark">
-            <tr>
-                <th class="col" (click)="increaseCounterAndSortData('name')">Name</th>
-                <th class="col" (click)="increaseCounterAndSortData('class')">Class</th>
-                <th class="col" (click)="increaseCounterAndSortData('section')">Section</th>
-                <th class="col" (click)="increaseCounterAndSortData('math')">Maths</th>
-                <th class="col" (click)="increaseCounterAndSortData('physics')">Physics</th>
-                <th class="col" (click)="increaseCounterAndSortData('computer')">Computer</th>
+            <tr (click)="increaseCounterAndSortData($event)">
+                <th class="col" id="name">Name
+                    <span sortingArrowImage [columnCounter]="columnCounter"
+                    [column]="'name'"></span>
+                </th>
+                <th class="col" id="class">Class
+                    <span sortingArrowImage [columnCounter]="columnCounter"
+                    [column]="'class'"></span>
+                </th>
+                <th class="col" id="section">Section
+                    <span sortingArrowImage [columnCounter]="columnCounter"
+                    [column]="'section'"></span>
+                </th>
+                <th class="col" id="math">Maths
+                    <span sortingArrowImage [columnCounter]="columnCounter"
+                    [column]="'math'"></span>
+                </th>
+                <th class="col" id="physics">Physics
+                    <span sortingArrowImage [columnCounter]="columnCounter"
+                    [column]="'physics'"></span>
+                </th>
+                <th class="col" id="computer">Computer
+                    <span sortingArrowImage [columnCounter]="columnCounter"
+                    [column]="'computer'"></span>
+                </th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let data of studentData">
+            <tr *ngFor="let data of studentData; trackBy:studentID">
                 <th>{{data.name}}</th>
                 <th>{{data.class}}</th>
                 <th>{{data.section}}</th>
@@ -22,3 +40,7 @@
         </tbody>
     </table>
 </ng-container>
+
+<ng-template #Loading>
+    <div class="loading">Loading...</div>
+</ng-template>

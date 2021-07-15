@@ -3,12 +3,14 @@ import { CommonModule } from '@angular/common';
 import { Route5Component } from './route5.component';
 import { RouterModule } from '@angular/router';
 import { Route5Service } from './route5.service';
+import { SortingArrowImageDirective } from './sorting-arrow-image.directive';
 
 
 
 @NgModule({
   declarations: [
-    Route5Component
+    Route5Component,
+    SortingArrowImageDirective
   ],
   imports: [
     CommonModule,

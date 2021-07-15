@@ -1,32 +1,41 @@
-<div class="conatiner" *ngIf="!loading">
-    <div class="btn-group">
-        <button (click)="changeView('ListView')" class="btn btn-info">
-            List View
-        </button>
-        <button (click)="changeView('GridView')" class="btn btn-danger">
-            Grid View
-        </button>
-        <div class="dropdown">
-            <button class="dropbtn">Sort By Price</button>
-            <div class="dropdown-content">
-                <a (click)="sortByPrice('ascending')">Price-Low To High</a>
-                <a (click)="sortByPrice('descending')">Price-High To Low</a>
+<ng-container *ngIf="(storeData$ | async) as products;else Loading">
+
+    <div class="conatiner">
+        <div class="btn-group">
+            <div (click)="changeView($event)">
+                <button id='ListView' class="btn btn-info">
+                    List View
+                </button>
+                <button id="GridView" class="btn btn-danger">
+                    Grid View
+                </button>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Sort By Price</button>
+                <div class="dropdown-content" (click)="sortByPrice($event)">
+                    <a id="ascending">Price - Low To High</a>
+                    <a id="descending">Price - High To Low</a>
+                    <a id="recommended">Price - Recommended</a>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div
-        [ngClass]="{'grid-container-4': selectedViewType === 'GridView', 'grid-container-2': selectedViewType === 'ListView'}">
-        <div class="item" *ngFor="let data of storeData">
-            <div class="product-name">
-                {{data.title}}
+        <div
+            [ngClass]="{'grid-container-4': selectedViewType === 'GridView', 'grid-container-2': selectedViewType === 'ListView'}">
+            <div class="item" *ngFor="let product of products">
+                <div class="product-name">
+                    {{product.title}}
+                </div>
+                <div class="image-wrapper">
+                    <img [attr.data-src]="product.image" alt="product">
+                </div>
+                <div class="price">$ {{product.price}}</div>
             </div>
-            <div class="image-wrapper">
-                <img src="{{data.image}}" alt="product">
-            </div>
-            <div class="price">$ {{data.price}}</div>
         </div>
-    </div>
-</div>
 
-<div class="loading" *ngIf="loading">Loading...</div>
+    </div>
+</ng-container>
+
+<ng-template #Loading>
+    <div class="loading">Loading...</div>
+</ng-template>

@@ -1,15 +1,26 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
+export interface StudentData {
+  id: number,
+  name: string,
+  class: number,
+  section: string,
+  math: number,
+  physics: number,
+  computer: number
+}
+
 @Injectable()
 export class Route5Service {
 
   constructor() { }
 
-  getStudentMarks(): Observable<Array<any>> {
+  getStudentMarks(): Observable<Array<StudentData>> {
     return of(
       [
         {
+          id: 11,
           name: 'Yogesh',
           class: 9,
           section: 'A',
@@ -18,6 +29,7 @@ export class Route5Service {
           computer: 33
         },
         {
+          id: 12,
           name: 'Ravi',
           class: 11,
           section: 'G',
@@ -26,6 +38,7 @@ export class Route5Service {
           computer: 93
         },
         {
+          id: 13,
           name: 'Ankit',
           class: 6,
           section: 'F',
@@ -34,6 +47,7 @@ export class Route5Service {
           computer: 73
         },
         {
+          id: 14,
           name: 'Elvis',
           class: 8,
           section: 'L',
@@ -42,6 +56,7 @@ export class Route5Service {
           computer: 43
         },
         {
+          id: 15,
           name: 'Rahul',
           class: 12,
           section: 'Q',
@@ -50,6 +65,7 @@ export class Route5Service {
           computer: 3
         },
         {
+          id: 16,
           name: 'Zahid',
           class: 3,
           section: 'V',
@@ -58,6 +74,7 @@ export class Route5Service {
           computer: 19
         },
         {
+          id: 17,
           name: 'Keshav',
           class: 1,
           section: 'D',
@@ -66,6 +83,7 @@ export class Route5Service {
           computer: 40
         },
         {
+          id: 18,
           name: 'Piyush',
           class: 4,
           section: 'P',
@@ -74,6 +92,7 @@ export class Route5Service {
           computer: 43
         },
         {
+          id: 19,
           name: 'Ayush',
           class: 2,
           section: 'M',
@@ -82,6 +101,7 @@ export class Route5Service {
           computer: 43
         },
         {
+          id: 21,
           name: 'Aditya',
           class: 5,
           section: 'Z',
@@ -90,6 +110,7 @@ export class Route5Service {
           computer: 60
         },
         {
+          id: 22,
           name: 'Vivek',
           class: 10,
           section: 'E',

@@ -2,22 +2,8 @@
     border: 3px solid black;
     padding: 15px;
 
-    .wrapper{
-        position: relative;
-        span{
-            position: absolute;
-            white-space: nowrap;
-            animation: bannerAnimation 60s linear infinite;
-            margin-top: -10px;
-        }
-    }
-}
-
-@keyframes bannerAnimation{
-    0%{
-        transform: translateX(0);
-    }
-    100%{
-        transform: translateX(-100%);
+    .rotating {
+        font-size: 80px;
+        color: blue;
     }
 }

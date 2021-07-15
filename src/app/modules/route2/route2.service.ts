@@ -11,3 +11,11 @@ export class Route2Service {
     return this.http.get('http://fakestoreapi.com/products');
   }
 }
+
+export enum ViewType {
+  ListView = "ListView",
+  GridView = "GridView"
+}
+
+
+
