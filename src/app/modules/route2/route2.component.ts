@@ -12,6 +12,15 @@ enum SortOrder {
 
 type ViewTypes = 'GridView' | 'ListView';
 
+interface product {
+  category: string,
+  id: number,
+  description: string,
+  image: string,
+  price: number,
+  title: string
+}
+
 @Component({
   selector: 'app-route2',
   templateUrl: './route2.component.html',
@@ -19,8 +28,8 @@ type ViewTypes = 'GridView' | 'ListView';
 })
 export class Route2Component implements OnInit {
 
-  storeData$: Observable<any[]> | undefined;
-  copyOfStoreData: Array<any> = [];
+  storeData$: Observable<product[]> | undefined;
+  copyOfStoreData: Array<product> = [];
   selectedViewType: ViewTypes = 'GridView';
   loading: boolean = true;
 
@@ -31,7 +40,7 @@ export class Route2Component implements OnInit {
 
   ngOnInit(): void {
     this.storeData$ = this.route2Service.getStoreData().pipe(
-      tap((data: StudentData[]) => {
+      tap((data: product[]) => {
         this.copyOfStoreData = data;
         setTimeout(() => {
           this.lazyLoadProductImages();
@@ -57,7 +66,7 @@ export class Route2Component implements OnInit {
   lazyLoadProductImages(): void {
     const productImages = this.elemRef.nativeElement.querySelectorAll('[data-src]');
     const imageObserver = new IntersectionObserver((entries, imageObserver) => {
-      entries.forEach(entry => {
+      entries.forEach((entry: IntersectionObserverEntry) => {
         if(!entry.isIntersecting) return;
         else {
           this.preloadImages(entry.target);
@@ -68,7 +77,7 @@ export class Route2Component implements OnInit {
       rootMargin: '50px'
     });
 
-    productImages.forEach((eachImage: any) => {
+    productImages.forEach((eachImage: HTMLImageElement) => {
       imageObserver.observe(eachImage);
     });
   }

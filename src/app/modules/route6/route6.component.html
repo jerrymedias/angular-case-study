@@ -1,5 +1,7 @@
-<div class="btn-container"  *ngFor="let btn of divContainerWithBtnlist; let i = index; trackBy:divByIndex">
-   <div class="vertical-center">
-       <button class="btn btn-primary" (click)="showAlert(i+1)">{{btn}}</button>
-   </div> 
+<div class="wrapper">
+    <div class="btn-container"  *ngFor="let btn of divContainerWithBtnlist; let i = index; trackBy:divByIndex">
+       <div class="vertical-center">
+           <button class="btn btn-primary" (click)="showAlert(i+1)">{{btn}}</button>
+       </div> 
+    </div>
 </div>
