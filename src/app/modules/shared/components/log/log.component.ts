@@ -1,7 +1,7 @@
 import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { SharedService } from '../shared.service';
+import { SharedService } from '../../services/shared.service';
 
 @Component({
   selector: 'app-log',

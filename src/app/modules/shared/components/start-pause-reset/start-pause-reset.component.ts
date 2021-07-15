@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { SharedService } from '../shared.service';
+import { SharedService } from '../../services/shared.service';
 
 @Component({
   selector: 'app-start-pause-reset',

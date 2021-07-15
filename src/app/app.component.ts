@@ -1,39 +1,15 @@
-import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit, OnDestroy {
-  title = 'Assingment';
+export class AppComponent implements OnInit {
   tabsList: Array<number> = [1, 2, 3, 4, 5, 6];
-  selectedTabIndex: number = 1;
-  onPageReloadQuerySubscription: Subscription | undefined;
 
-  constructor(
-    private activatedRoute: ActivatedRoute,
-    private router: Router
-  ) { }
+  constructor() { }
 
-  ngOnInit(): void {
-    this.onPageReloadQuerySubscription = this.activatedRoute.queryParams.subscribe((queryParams: any) => {
-      if (queryParams.tab) {
-        this.selectedTabIndex = queryParams.tab;
-      }
-    });
-  }
+  ngOnInit() {}
 
-  navigateTo(routeNumber: number): void {
-    this.selectedTabIndex = routeNumber;
-    this.router.navigate([`route-${routeNumber}`], {
-      queryParams: {tab: routeNumber}
-    });
-  }
-
-  ngOnDestroy(): void {
-    this.onPageReloadQuerySubscription && this.onPageReloadQuerySubscription.unsubscribe();
-  }
 }
