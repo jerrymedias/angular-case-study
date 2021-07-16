@@ -8,7 +8,7 @@ export class Route2Service {
   constructor(private http: HttpClient) { }
   
   getStoreData(): Observable<any> {
-    return this.http.get('http://fakestoreapi.com/products');
+    return this.http.get('https://fakestoreapi.com/products');
   }
 }
 
