@@ -4,7 +4,7 @@ import { Route2Component } from './route2.component';
 import { RouterModule } from '@angular/router';
 import { Route2Service } from './route2.service';
 import { HttpClientModule } from '@angular/common/http';
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from '../../shared/shared.module';
 
 
 

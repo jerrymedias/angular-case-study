@@ -1,5 +1,5 @@
 import { Directive, DoCheck, ElementRef, Input } from '@angular/core';
-import { SortOrder } from '../../route2/route2.component';
+import { SortOrder } from '../../featured/route2/route2.component';
 @Directive({
   selector: '[sortingArrowImage]'
 })
